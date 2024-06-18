@@ -1,0 +1,32 @@
+{
+  "name": "gadgetgrove",
+  "description": "",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node backend/server",
+    "server": "nodemon backend/server",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rishavB7/GadgetGrove.git"
+  },
+  "author": "Rishav Barman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rishavB7/GadgetGrove/issues"
+  },
+  "homepage": "https://github.com/rishavB7/GadgetGrove#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.4.3"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.1.3"
+  }
+}
