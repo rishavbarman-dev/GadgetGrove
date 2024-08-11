@@ -1,12 +1,29 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
 
-@import url('https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+body,
+html,
+* {
+  margin: 0;
+  font-family: "Merriweather Sans", sans-serif;
+}
 
-body {
-    margin: 0;
-    font-family: 'Amaranth';
-    font-weight: 400;
+h1 {
+  text-transform: uppercase;
+  margin-top: 1rem;
+  letter-spacing: 2px;
+  font-weight: 400;
+}
 
+.main {
+  min-height: 80vh;
+}
+
+.container {
+  width: 85%;
+  max-width: 1120px;
+  margin: 0 auto;
 }

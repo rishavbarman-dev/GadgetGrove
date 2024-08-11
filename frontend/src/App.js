@@ -1,15 +1,15 @@
 import "./App.css";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Header from "./components/header/Header";
+import Footer from "./components/footer/Footer";
 
 function App() {
   return (
     <>
-      <div className="flex flex-col min-h-screen">
-        <Header />
-        <main className="flex-grow">{/* Your main content goes here */}</main>
-        <Footer />
-      </div>
+      <Header />
+      <main className="main container">
+        <h1>Welcome to GadgetGrove</h1>
+      </main>
+      <Footer />
     </>
   );
 }

@@ -1,9 +1,10 @@
 import React from "react";
+import "./Footer.css";
 
 const Footer = () => {
   return (
-    <footer className="md: w-full py-4 bg-[#33393d] text-white flex justify-center items-center text-sm">
-      <div className="footer">
+    <footer className="container">
+      <div className="footer-text">
         Copyright &copy; 2023 GadgetGrove - All rights reserved
       </div>
     </footer>
