@@ -1,3 +1,10 @@
+:root {
+  --primary-color-1: #2e323f;
+  --primary-color-2: #474e68;
+  --primary-color-3: #50577a;
+  --primary-color-4: #6b728e;
+}
+
 *,
 ::before,
 ::after {
@@ -8,14 +15,12 @@ body,
 html,
 * {
   margin: 0;
+  padding: 0;
   font-family: "Merriweather Sans", sans-serif;
 }
 
 h1 {
-  text-transform: uppercase;
-  margin-top: 1rem;
-  letter-spacing: 2px;
-  font-weight: 400;
+  margin: 0;
 }
 
 .main {
@@ -26,4 +31,5 @@ h1 {
   width: 85%;
   max-width: 1120px;
   margin: 0 auto;
+  position: relative;
 }
