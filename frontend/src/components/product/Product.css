@@ -1,3 +1,6 @@
+.product-title {
+  margin-top: 10px;
+}
 .product-card {
   background-color: #fff;
   width: 260px;
@@ -6,11 +9,16 @@
   margin-top: 25px;
   border-radius: 10px;
   cursor: pointer;
+  position: relative;
 }
 
 .product-img {
   width: 100%;
   padding: 16px;
+}
+
+.product-text-container {
+  position: absolute;
 }
 
 .product-name,
@@ -20,4 +28,15 @@
   font-weight: 400;
   text-align: left;
   margin: 10px 0 0 20px;
+}
+
+@media (min-width: 700px) {
+  .product-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .product-card {
+    margin-bottom: 10px;
+  }
 }

@@ -5,12 +5,7 @@ import "./HomeScreen.css";
 const HomeScreen = () => {
   return (
     <div>
-      <h1 className="homeScreen-title">Latest Products</h1>
-      <div className="row">
-        <div className="col">
-          <Product />
-        </div>
-      </div>
+      <Product />
     </div>
   );
 };
