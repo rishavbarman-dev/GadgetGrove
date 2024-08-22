@@ -2,7 +2,9 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
-import HomeScreen from "./screens/HomeScreen";
+import HomeScreen from "./screens/HomeScreen/HomeScreen";
+import SignupScreen from "./screens/SigupScreen/SignupScreen";
+import LoginScreen from "./screens/LoginScreen/LoginScreen";
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
         <main className="main container">
           <Routes>
             <Route path="/" element={<HomeScreen />}></Route>
+            <Route path="/signup" element={<SignupScreen />}></Route>
+            <Route path="/signin" element={<LoginScreen />}></Route>
           </Routes>
         </main>
         <Footer />
