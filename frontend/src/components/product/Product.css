@@ -8,7 +8,6 @@
   box-shadow: 0px 0px 2px 0 #3e455a;
   margin-top: 25px;
   border-radius: 10px;
-  cursor: pointer;
   position: relative;
 }
 
@@ -19,6 +18,11 @@
 
 .product-text-container {
   position: absolute;
+}
+
+.product-redirect-link {
+  text-decoration: none;
+  color: #070707;
 }
 
 .product-name,

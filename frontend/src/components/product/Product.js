@@ -1,5 +1,6 @@
 import React from "react";
 import "./Product.css";
+import { Link } from "react-router-dom";
 import products from "../../products";
 import Rating from "../rating/Rating";
 
@@ -12,13 +13,23 @@ const Product = () => {
           {products.map((product) => (
             <div className="product-card">
               <div className="product-text-container">
-                <img
-                  key={product._id}
-                  className="product-img"
-                  src={product.image}
-                  alt="products images"
-                />
-                <h3 className="product-name">{product.name}</h3>
+                <Link
+                  className="product-redirect-link"
+                  to={`/product/${product._id}`}
+                >
+                  <img
+                    key={product._id}
+                    className="product-img"
+                    src={product.image}
+                    alt="products images"
+                  />
+                </Link>
+                <Link
+                  className="product-redirect-link"
+                  to={`/product/${product._id}`}
+                >
+                  <h3 className="product-name">{product.name}</h3>
+                </Link>
                 <h3 className="product-rating">
                   <Rating
                     value={product.rating}
