@@ -1,6 +1,7 @@
 import React from "react";
 import "./Product.css";
 import products from "../../products";
+import Rating from "../rating/Rating";
 
 const Product = () => {
   return (
@@ -18,7 +19,12 @@ const Product = () => {
                   alt="products images"
                 />
                 <h3 className="product-name">{product.name}</h3>
-                <h3 className="product-rating">{product.rating}</h3>
+                <h3 className="product-rating">
+                  <Rating
+                    value={product.rating}
+                    text={`${product.numReviews} reviews`}
+                  />
+                </h3>
                 <h3 className="product-price">Rs. {product.price} </h3>
               </div>
             </div>
