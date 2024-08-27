@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Product.css";
 import { Link } from "react-router-dom";
-import products from "../../products";
 import Rating from "../rating/Rating";
+import axios from "axios";
 
 const Product = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const { data } = await axios.get("/api/products");
+      setProducts(data);
+    };
+    fetchProducts();
+  }, []);
+
   return (
     <>
       <div className="container">
