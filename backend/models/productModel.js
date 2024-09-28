@@ -18,6 +18,11 @@ const reviewSchema = new mongoose.Schema(
 
 const productSchema = new mongoose.Schema(
   {
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: "User",
+    },
     name: {
       type: String,
       required: true,
@@ -54,7 +59,7 @@ const productSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
-    stock: {
+    countInStock: {
       type: Number,
       required: true,
       min: 0,

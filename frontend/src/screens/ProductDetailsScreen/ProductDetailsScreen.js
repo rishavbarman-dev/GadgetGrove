@@ -5,16 +5,25 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 const ProductDetailsScreen = () => {
-  const [product, setProduct] = useState([]);
+  const [product, setProduct] = useState({});
+
   const { id } = useParams();
 
   useEffect(() => {
     const fetchProduct = async () => {
-      const { data } = await axios.get(`/api/product/${id}`);
-      setProduct(data);
+      try {
+        const { data } = await axios.get(`/api/product/${id}`);
+        setProduct(data);
+      } catch (error) {
+        if (error.response && error.response.status === 400) {
+          console.log("Product ot found");
+        } else {
+          console.log("Something went wrong");
+        }
+      }
     };
     fetchProduct();
-  }, []);
+  }, [id]);
 
   return (
     <>
@@ -27,7 +36,7 @@ const ProductDetailsScreen = () => {
           <div className="productDetails-product-info">
             <h3 className="productDetails-product-name">{product.name}</h3>
             <h3 className="productDetails-product-rating">
-              <Rating value="4.0" text={`10 reviews`} />
+              <Rating value="4.0" text={`${product.numReviews}`} />
             </h3>
             <h3 className="productDetails-product--price">
               Rs. {product.price}{" "}
