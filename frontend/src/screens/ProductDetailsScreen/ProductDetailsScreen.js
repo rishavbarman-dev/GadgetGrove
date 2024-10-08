@@ -13,7 +13,8 @@ const ProductDetailsScreen = () => {
     const fetchProduct = async () => {
       try {
         const { data } = await axios.get(`/api/product/${id}`);
-        setProduct(data);
+        console.log(data);
+        setProduct(data.product);
       } catch (error) {
         if (error.response && error.response.status === 400) {
           console.log("Product ot found");
