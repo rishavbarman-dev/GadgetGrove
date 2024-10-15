@@ -6,6 +6,7 @@ import HomeScreen from "./screens/HomeScreen/HomeScreen";
 import SignupScreen from "./screens/SigupScreen/SignupScreen";
 import LoginScreen from "./screens/LoginScreen/LoginScreen";
 import ProductDetailsScreen from "./screens/ProductDetailsScreen/ProductDetailsScreen";
+import AddToCartScreen from "./screens/AddToCartScreen/AddToCartScreen";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
               path="/product/:id"
               element={<ProductDetailsScreen />}
             ></Route>
+            <Route path="/cart/:id?" element={<AddToCartScreen />}></Route>
           </Routes>
         </main>
         <Footer />

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Rating from "../../components/rating/Rating";
 import "./ProductDetailsScreen.css";
-import { useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { listProductDetails } from "../../actions/productActions";
 import Loader from "../../components/loader/Loader";
@@ -9,6 +9,7 @@ import Message from "../../components/message/Message";
 
 const ProductDetailsScreen = () => {
   const params = useParams();
+  const navigate = useNavigate();
 
   const [qty, setQty] = useState(1);
 
@@ -21,6 +22,10 @@ const ProductDetailsScreen = () => {
     dispatch(listProductDetails(params.id));
   }, [dispatch, params.id]);
 
+  const addToCartHandler = () => {
+    navigate(`/cart/${params.id}?qty${qty}`);
+  };
+
   return (
     <>
       {loading ? (
@@ -29,6 +34,9 @@ const ProductDetailsScreen = () => {
         <Message variant="error">{error}</Message>
       ) : (
         <div className="container">
+          <Link to="/" className="productDetails-gb">
+            <div className="productDetails-gb-btn">GO BACK</div>
+          </Link>
           <div className="productDetails-row">
             <div className="productDetails-product-image">
               <img src={product.image} alt="" />
@@ -78,7 +86,16 @@ const ProductDetailsScreen = () => {
               )}
 
               <div className="productDetails-product-cart-row">
-                <button className="productDetails-product-cart-btn">
+                <button
+                  className="productDetails-product-cart-btn"
+                  disabled={product.countInStock === 0}
+                  style={{
+                    opacity: product.countInStock > 0 ? 1 : 0.5,
+                    cursor:
+                      product.countInStock > 0 ? "pointer" : "not-allowed",
+                  }}
+                  onClick={addToCartHandler}
+                >
                   Add to cart
                 </button>
               </div>

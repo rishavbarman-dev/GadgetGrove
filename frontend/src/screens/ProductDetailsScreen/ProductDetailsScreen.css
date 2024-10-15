@@ -10,6 +10,24 @@
   width: 100%;
 }
 
+.productDetails-gb {
+  text-decoration: none;
+}
+
+.productDetails-gb-btn {
+  color: #1a1a1a;
+  height: 40px;
+  width: 90px;
+  padding: 10px 15px;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.productDetails-gb-btn:hover {
+  background-color: #d9d6d6;
+  cursor: pointer;
+}
+
 .productDetails-product-info {
   /* border: 1px solid #97a1a7; */
   height: auto;
@@ -55,7 +73,7 @@
 
 .productDetails-product-cart-btn:hover,
 .productDetails-product-cart-btn:active {
-  opacity: 0.75;
+  background-color: #2e2d2d;
   cursor: pointer;
 }
 
