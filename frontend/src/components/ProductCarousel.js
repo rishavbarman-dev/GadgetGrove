@@ -16,6 +16,9 @@ const ProductCarousel = () => {
     dispatch(listTopProducts());
   }, [dispatch]);
 
+  console.log("PRODUCTS TYPE:", Array.isArray(products), products);
+
+
   return loading ? (
     <Loader />
   ) : error ? (
