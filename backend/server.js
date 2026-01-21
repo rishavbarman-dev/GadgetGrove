@@ -1,6 +1,7 @@
 import path from "path";
 import express from "express";
 import dotenv from "dotenv";
+import cors from "cors";
 import connectDB from "./config/db.js";
 import colors from "colors";
 import morgan from "morgan";
@@ -22,6 +23,12 @@ if (process.env.NODE_ENV === "development") {
 }
 
 app.use(express.json());
+
+app.use(cors({
+  origin: ["http://localhost:3001", "https://gadgetgrove-frontend-dsii.onrender.com"],
+  credentials: true,
+}));
+
 
 app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);
