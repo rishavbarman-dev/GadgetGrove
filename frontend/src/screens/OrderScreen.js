@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { PayPalButton } from "react-paypal-button-v2";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col, ListGroup, Image, Card, Button } from "react-bootstrap";
 import Message from "../components/Message";
@@ -20,7 +20,7 @@ const OrderScreen = ({ match }) => {
   const { id } = useParams();
   const orderId = id;
 
-  const [sdkReady, setSdkReady] = useState(false);
+  // const [sdkReady, setSdkReady] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -53,29 +53,30 @@ const OrderScreen = ({ match }) => {
       navigate("/login");
     }
 
-    const addPayPalScript = async () => {
-      const { data: clientId } = await axios.get("/api/config/paypal");
-      const script = document.createElement("script");
-      script.type = "text/javascript";
-      script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`;
-      script.async = true;
-      script.onload = () => {
-        setSdkReady(true);
-      };
-      document.body.appendChild(script);
-    };
+    // const addPayPalScript = async () => {
+    //   const { data: clientId } = await axios.get("/api/config/paypal");
+    //   const script = document.createElement("script");
+    //   script.type = "text/javascript";
+    //   script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`;
+    //   script.async = true;
+    //   script.onload = () => {
+    //     setSdkReady(true);
+    //   };
+    //   document.body.appendChild(script);
+    // };
 
     if (!order || successPay || successDeliver) {
       dispatch({ type: ORDER_PAY_RESET });
       dispatch({ type: ORDER_DELIVER_RESET });
       dispatch(getOrderDetails(orderId));
-    } else if (!order.isPaid) {
-      if (!window.paypal) {
-        addPayPalScript();
-      } else {
-        setSdkReady(true);
-      }
-    }
+    } 
+    // else if (!order.isPaid) {
+    //   if (!window.paypal) {
+    //     addPayPalScript();
+    //   } else {
+    //     setSdkReady(true);
+    //   }
+    // }
   }, [
     dispatch,
     orderId,
@@ -206,7 +207,7 @@ const OrderScreen = ({ match }) => {
                   <Col>₹{order.totalPrice}</Col>
                 </Row>
               </ListGroup.Item>
-              {!order.isPaid && (
+              {/* {!order.isPaid && (
                 <ListGroup.Item>
                   {loadingPay && <Loader />}
                   {!sdkReady ? (
@@ -218,7 +219,40 @@ const OrderScreen = ({ match }) => {
                     />
                   )}
                 </ListGroup.Item>
+              )} */}
+              {!order.isPaid && (
+                <ListGroup.Item>
+                  {loadingPay && <Loader />}
+
+                  <PayPalScriptProvider
+                    options={{
+                      "client-id": process.env.PAYPAL_CLIENT_ID,
+                      currency: "USD",
+                    }}
+                  >
+                    <PayPalButtons
+                      style={{ layout: "vertical" }}
+                      createOrder={(data, actions) => {
+                        return actions.order.create({
+                          purchase_units: [
+                            {
+                              amount: {
+                                value: order.totalPrice,
+                              },
+                            },
+                          ],
+                        });
+                      }}
+                      onApprove={(data, actions) => {
+                        return actions.order.capture().then((details) => {
+                          successPaymentHandler(details);
+                        });
+                      }}
+                    />
+                  </PayPalScriptProvider>
+                </ListGroup.Item>
               )}
+
 
               {loadingDeliver && <Loader />}
               {userInfo &&
