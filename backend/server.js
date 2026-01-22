@@ -25,7 +25,7 @@ if (process.env.NODE_ENV === "development") {
 app.use(express.json());
 
 app.use(cors({
-  origin: ["http://localhost:3001", "https://gadgetgrove-frontend-dsii.onrender.com"],
+  origin: ["http://localhost:3001", "https://gadgetgrove-frontend-dsii.onrender.com", "https://697241d23eb003d3189e07b4--gadgetgrove007.netlify.app"],
   credentials: true,
 }));
 
