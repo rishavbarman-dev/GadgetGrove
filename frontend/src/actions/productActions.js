@@ -30,7 +30,7 @@ export const listProducts =
       dispatch({ type: PRODUCT_LIST_REQUEST });
 
       const { data } = await axios.get(
-        `${process.env.REACT_APP_API_URL}/api/products?keyword=${keyword}&pageNumber=${pageNumber}`
+        `https://gadgetgrove-backend.onrender.com/api/products?keyword=${keyword}&pageNumber=${pageNumber}`
       );
 
       dispatch({
