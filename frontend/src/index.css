@@ -1,35 +1,124 @@
-:root {
-  --primary-color-1: #2e323f;
-  --primary-color-2: #474e68;
-  --primary-color-3: #50577a;
-  --primary-color-4: #6b728e;
+main {
+    min-height: 80vh;
 }
 
-*,
-::before,
-::after {
-  box-sizing: border-box;
-}
-
-body,
-html,
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Merriweather Sans", sans-serif;
+h3 {
+    padding: 1rem 0;
+    font-size: 1rem;
 }
 
 h1 {
-  margin: 0;
+    font-size: 1.8rem;
+    padding: 1rem 0;
 }
 
-.main {
-  min-height: 80vh;
+h2 {
+    font-size: 1.4rem;
+    padding: 0.5rem 0;
 }
 
-.container {
-  width: 85%;
-  max-width: 1120px;
+.rating span {
+    margin: 0.1rem
+}
+
+.searchBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* carousel */
+.carousel-item-next,
+.carousel-item-prev,
+.carousel-item.active {
+  display: flex;
+}
+.carousel-caption {
+  position: absolute;
+  top: 0;
+}
+
+.carousel-caption h2 {
+  color: #fff;
+}
+
+.carousel img {
+  height: 300px;
+  padding: 30px;
+  margin: 40px;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.carousel a {
   margin: 0 auto;
-  position: relative;
 }
+
+@media (max-width: 900px) {
+  .carousel-caption h2 {
+    font-size: 2.5vw;
+  }
+}
+
+ /* Footer */
+ body{
+  margin:0;
+  overflow-x:hidden;
+  }
+  
+  .footer{
+  background: #343a40 !important;
+  margin-top: 100px;
+  margin-bottom: 0px;
+  padding:10px 0px;
+  font-family: 'Play', sans-serif;
+  text-align:center;
+  height: 270px;
+  }
+  
+  .footer .row{
+  width:100%;
+  margin:1% 0%;
+  padding:0.6% 0%;
+  color:#ffffff80;
+  font-size:0.8em;
+  }
+  
+  .footer .row a{
+  text-decoration:none;
+  color:#ffffff80;
+  transition:0.5s;
+  }
+  
+  .footer .row a:hover{
+  color:#ffffff;
+  }
+  
+  .footer .row ul{
+  width:100%;
+  }
+  
+  .footer .row ul li{
+  display:inline-block;
+  margin:0px 30px;
+  }
+  
+  .footer .row a i{
+  font-size:2em;
+  margin:0% 1%;
+  }
+  
+  @media (max-width:720px){
+  .footer{
+  text-align:left;
+  padding:5%;
+  }
+  .footer .row ul li{
+  display:block;
+  margin:10px 0px;
+  text-align:left;
+  }
+  .footer .row a i{
+  margin:0% 3%;
+  }
+  }

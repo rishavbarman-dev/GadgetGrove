@@ -1,34 +1,71 @@
-import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Header from "./components/header/Header";
-import Footer from "./components/footer/Footer";
-import HomeScreen from "./screens/HomeScreen/HomeScreen";
-import SignupScreen from "./screens/SigupScreen/SignupScreen";
-import LoginScreen from "./screens/LoginScreen/LoginScreen";
-import ProductDetailsScreen from "./screens/ProductDetailsScreen/ProductDetailsScreen";
-import AddToCartScreen from "./screens/AddToCartScreen/AddToCartScreen";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Container from "react-bootstrap/Container";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import HomeScreen from "./screens/HomeScreen";
+import ProductScreen from "./screens/ProductScreen";
+import CartScreen from "./screens/CartScreen";
+import LoginScreen from "./screens/LoginScreen";
+import RegisterScreen from "./screens/RegisterScreen";
+import ProfileScreen from "./screens/ProfileScreen";
+import ShippingScreen from "./screens/ShippingScreen";
+import PaymentScreen from "./screens/PaymentScreen";
+import PlaceOrderScreen from "./screens/PlaceOrderScreen";
+import OrderScreen from "./screens/OrderScreen";
+import UserListScreen from "./screens/UserListScreen";
+import UserEditScreen from "./screens/UserEditScreen";
+import ProductListScreen from "./screens/ProductListScreen";
+import ProductEditScreen from "./screens/ProductEditScreen";
+import OrderListScreen from "./screens/OrderListScreen";
 
-function App() {
+const App = () => {
   return (
-    <>
+    <div>
       <Router>
         <Header />
-        <main className="main container">
-          <Routes>
-            <Route path="/" element={<HomeScreen />}></Route>
-            <Route path="/signup" element={<SignupScreen />}></Route>
-            <Route path="/signin" element={<LoginScreen />}></Route>
-            <Route
-              path="/product/:id"
-              element={<ProductDetailsScreen />}
-            ></Route>
-            <Route path="/cart/:id?" element={<AddToCartScreen />}></Route>
-          </Routes>
+        <main className="py-3">
+          <Container>
+            <Routes>
+              <Route path="/login" Component={LoginScreen} />
+              <Route path="/shipping" Component={ShippingScreen} />
+              <Route path="/order/:id" Component={OrderScreen} />
+              <Route path="/payment" Component={PaymentScreen} />
+              <Route path="/placeorder" Component={PlaceOrderScreen} />
+              <Route path="/register" Component={RegisterScreen} />
+              <Route path="/profile" Component={ProfileScreen} />
+              <Route path="/product/:id" Component={ProductScreen} />
+              <Route path="/cart/:id?" Component={CartScreen} />
+              <Route path="/admin/userlist" Component={UserListScreen} />
+              <Route
+                path="/admin/productlist"
+                Component={ProductListScreen}
+                exact
+              />
+              <Route
+                path="/admin/productlist/:pageNumber"
+                Component={ProductListScreen}
+                exact
+              />
+              <Route path="/admin/orderlist" Component={OrderListScreen} />
+              <Route path="/admin/user/:id/edit" Component={UserEditScreen} />
+              <Route
+                path="/admin/product/:id/edit"
+                Component={ProductEditScreen}
+              />
+              <Route path="/search/:keyword" Component={HomeScreen} exact />
+              <Route path="/page/:pageNumber" Component={HomeScreen} exact />
+              <Route
+                path="/search/:keyword/page/pageNumber"
+                Component={HomeScreen}
+              />
+              <Route path="/" Component={HomeScreen} exact />
+            </Routes>
+          </Container>
         </main>
         <Footer />
       </Router>
-    </>
+    </div>
   );
-}
+};
 
 export default App;
