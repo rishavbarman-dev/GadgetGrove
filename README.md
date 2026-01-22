@@ -4,6 +4,13 @@ GadgetGrove is a full-stack **MERN e-commerce application** where users can brow
 
 ---
 
+## Requirements
+
+- Node.js: v18.20.4 (the project may break on later Node versions)
+- npm: v9.x or compatible with Node v18
+- MongoDB: any connection string for development or production
+
+
 ## Features
 
 ### Frontend
@@ -44,6 +51,7 @@ GadgetGrove is a full-stack **MERN e-commerce application** where users can brow
 ## Installation
 
 ### Backend
+
 
 1. Navigate to the backend folder:
 
